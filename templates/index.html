@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>Цикл</title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=e61171c1-e2c6-4709-beaa-e162eeaaf994&lang=ru_RU"
+    type="text/javascript" >
+    </script>
+    <script type="text/javascript">
+        ymaps.ready(init);
+        function init(){
+            var myMap = new ymaps.Map("map", {
+                center: [55.78874, 49.12214], // Координаты Казани
+                zoom: 12
+            });
+            var placemark = new ymaps.Placemark([55.792174, 49.124560], {
+               hintContent: '<b style="font-size: 16px; color: green;">Green Life</b>',
+               balloonContent: '<div style="display: flex; flex-direction: column; align-items: center;">' +
+                 '<div style="font-size: 16px; font-weight: bold;">Green Life</div>' +
+                 '<p>Акции:</p>' +
+                 '<p><b>[My Cup, Please]:</b> Скидка 5 %\n' +
+                   'на напиток в вашу кружку вместо одноразового стаканчика!</p>' +
+                 '<img src="static/img/unnamed.jpg" alt="Картинка" width="100" height="120">' +
+                 '</div>'
+            });
+
+            var anotherPlacemark = new ymaps.Placemark([55.786804, 49.120967], {
+                hintContent: '<b style="font-size: 16px; color: green;">Skuratov</b>',
+                balloonContent: '<div style="display: flex; flex-direction: column; align-items: center;">' +
+                 '<div style="font-size: 16px; font-weight: bold;">Skuratov</div>' +
+                 '<p>Акции:</p>' +
+                 '<p><b>[Десерты]:</b> после 20:00 во всех кофейнях у нас действует скидка 50% на еду из холодильника.</p>' +
+                 '<img src="static/img/2Q573l4QDSE.jpg" alt="Картинка" width="100" height="100">' +
+                 '</div>'
+            });
+
+            var coffeeLikePlacemark = new ymaps.Placemark([55.787437, 49.120482], {
+                hintContent: '<b style="font-size: 16px; color: green;">Coffee like</b>',
+                balloonContent: '<div style="display: flex; flex-direction: column; align-items: center;">' +
+                '<div style="font-size: 16px; font-weight: bold;">Coffee like</div>' +
+                '<p>Акция: Скидка 10% на кофе в вашей кружке вместо одноразового стаканчика!</p>' +
+                '<img src="static/img/main2.png" alt="Картинка" width="170" height="100">' +
+                '</div>'
+            });
+
+            var shokoladnitsaPlacemark = new ymaps.Placemark([55.780957, 49.213134], {
+                hintContent: '<b style="font-size: 16px; color: green;">Шоколадница</b>',
+                balloonContent: '<div style="display: flex; flex-direction: column; align-items: center;">' +
+                    '<div style="font-size: 16px; font-weight: bold;">Шоколадница</div>' +
+                    '<p>Акция: 10% скидка на напиток в свою кружку!</p>' +
+                    '<img src="static/img/dc1e475164bec162c26ef072a7e1be32.jpg" alt="Картинка" width="160" height="100">' +
+                    '</div>'
+                });
+
+                var vkusvillPlacemark = new ymaps.Placemark([55.786804, 49.120967], {
+                    hintContent: '<b style="font-size: 16px; color: green;">Вкусвилл</b>',
+                    balloonContent: '<div style="display: flex; flex-direction: column; align-items: center;">' +
+                        '<div style="font-size: 16px; font-weight: bold;">Вкусвилл</div>' +
+                        '<p>Акция: Мы дарим за такие экологичные покупки бонусы на карту лояльности. За каждую покупку в свою ёмкость мы начисляем 5 бонусных баллов — максимум 100 баллов за месяц, то есть 20 покупок.<br>Товары с истекающим сроком годности устанавливается скидка 40% — их легко найти под зелёным ценником.</p>' +
+                        '<img src="static/img/vkusville-store-entrance.jpg" alt="Картинка" width="130" height="100">' +
+                        '</div>'
+
+                });
+
+                var minPlacemark = new ymaps.Placemark([55.801754, 49.125755], {
+                    hintContent: '<b style="font-size: 16px; color: green;">MIÑ</b>',
+                    balloonContent: '<div style="display: flex; flex-direction: column; align-items: center;">' +
+                        '<div style="font-size: 16px; font-weight: bold;">MIÑ</div>' +
+                        '<p>Акция: Скидка при предъявлении читательского билета</p>' +
+                        '<img src="static/img/18.jpg" alt="Картинка" width="130" height="100">' +
+                        '</div>'
+                });
+                // Добавьте метку на карту
+            myMap.geoObjects.add(placemark);
+            myMap.geoObjects.add(anotherPlacemark);
+            myMap.geoObjects.add(coffeeLikePlacemark);
+            myMap.geoObjects.add(shokoladnitsaPlacemark);
+            myMap.geoObjects.add(vkusvillPlacemark);
+            myMap.geoObjects.add(minPlacemark);
+        }
+    </script>
+    <style>
+        body  {
+            background: #f4f1e9;
+            }
+        .Border{
+            background: #688f4e;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .container{
+        }
+        h1{
+            color: #f4f1e9;;
+        }
+        .d-flex{
+            background: #b1d182;
+        }
+        table {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            margin-top: 20px;
+            border-collapse: collapse;
+            overflow: auto;
+            max-height: 100px; /* Здесь установите желаемую высоту */
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #688f4e;
+            color: #f4f1e9;
+        }
+        .highlight {
+            background-color: yellow;
+            }
+        .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            background-color: #688f4e;
+            color: #f4f1e9;
+            padding: 7px 13px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #b1d182;
+        }
+
+        .button:focus {
+            outline: none;
+            box-shadow: 0 0 5px #688f4e;
+        }
+        .highlight {
+        background-color: #b1d182; /* Измените на желаемый цвет */
+        }
+        .dark-theme {
+        background: #1a1a1a; /* Измените на желаемый цвет фона */
+        color: #fff; /* Задайте желаемый цвет текста для темной темы */
+        }
+        .star-rating {
+            font-size: 20px;
+        }
+
+        .star-rating .star {
+            color: #ccc;
+            cursor: pointer;
+        }
+
+        .star-rating .star.checked {
+            color: gold;
+        }
+
+        .rate-button {
+            background-color: transparent;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .rating-input {
+            display: none;
+        }
+        .filter-container {
+            display: flex;
+            margin-top: -20px;
+            margin-right: 20px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-select {
+            padding: 7px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            box-shadow: 0 0 5px #688f4e;
+        }
+        tbody {
+            display: block;
+            overflow: auto;
+            max-height: 210px; /* Установите желаемую высоту для tbody */
+            overflow-y: auto;
+        }
+
+        tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        td {
+            overflow: hidden;
+            text-overflow: ellipsis; /* Это обрежет текст, если он слишком длинный */
+            overflow-y: auto;
+        }
+
+        thead, tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+    </style>
+</head>
+<body>
+        <footer class="Border">
+            <div class="container">
+              <h1 align="center">ЦИКЛ</h1>
+            </div>
+        </footer>
+      {% block content %}
+        <form action="/search" method="POST" align="center">
+            <div class="search-container">
+                <input type="text" name="NameOrganization" placeholder="Название" style="width: 530px; height: 42px">
+                 <button type="submit" class="button">Поиск</button>
+            </div>
+        </form>
+        {% if organizations %}
+            {% if search_name.strip() != '' %}
+
+        {% endif %}
+        <div class="filter-container">
+            <label for="filter" class="sr-only">Фильтр по типу:</label>
+            <select id="filter" class="filter-select">
+                <option value="all">Все</option>
+                <option value="кафе">Кафе</option>
+                <option value="кофейня">Кофейня</option>
+                <option value="магазин">Магазин</option>
+            </select>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Адрес</th>
+                    <th>Время работы</th>
+                    <th>Тип</th>
+                    <th>Рейтинг</th>
+                    <th>Оценить</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for organization in organizations %}
+
+                    <tr class="{% if search_name and organization.organization_name.lower() == search_name.lower() %}highlight{% endif %}">
+                        <td>{{ organization.organization_name }}</td>
+                        <td>{{ organization.address }}</td>
+                        <td>{{ organization.opening_hours }}</td>
+                        <td>{{ organization.type_organization }}</td>
+                        <td>
+                            <div class="star-rating" id="star-rating-{{ organization.id }}">
+                                <span class="star" data-rating="1">&#9733;</span>
+                                <span class="star" data-rating="2">&#9733;</span>
+                                <span class="star" data-rating="3">&#9733;</span>
+                                <span class="star" data-rating="4">&#9733;</span>
+                                <span class="star" data-rating="5">&#9733;</span>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="rate-button" onclick="showRatingInput({{ organization.id }})">Оценить</button>
+                            <div class="rating-input" id="rating_input_{{ organization.id }}" style="display: none;">
+                                <input type="number" min="1" max="5" id="rating_value_{{ organization.id }}">
+                                <button class="rate-button" onclick="setRating({{ organization.id }}, document.getElementById('rating_value_{{ organization.id }}').value)">Сохранить</button>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            <tbody>
+        </table>
+       {% else %}
+            <p>Нет доступных организаций</p>
+       {% endif %}
+      {% endblock %}
+        <div id="map" style="width: 600px; height: 400px; margin:auto" ></div>
+
+
+        <p></p>
+
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div class="col-md-4 d-flex align-items-center">
+              <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                <img class="footers__img" src="{{ url_for('static', filename='img/lofotype_Cycle.png') }}" alt="problem">
+              </a>
+              <span class="mb-3 mb-md-0 text-body-secondary">Diana<br> 2023</span>
+            </div>
+            <button id="theme-toggle" class="button">Сменить тему</button>
+        </footer>
+</body>
+  <script>
+           function setRating(organizationId, rating) {
+                var stars = document.querySelectorAll('#star-rating-' + organizationId + ' .star');
+
+                for (var i = 0; i < 5; i++) {
+                    if (i < rating) {
+                        stars[i].classList.add('checked');
+                    } else {
+                        stars[i].classList.remove('checked');
+                    }
+                }
+           }
+
+            function showRatingInput(organizationId) {
+                var ratingInput = document.getElementById('rating_input_' + organizationId);
+                ratingInput.style.display = 'block';
+            }
+            document.addEventListener("DOMContentLoaded", function() {
+                const themeToggle = document.getElementById("theme-toggle");
+                const body = document.body;
+                let isDarkTheme = false;
+
+                // Установите начальную тему (например, светлую)
+                body.classList.remove("dark-theme");
+
+                function toggleTheme() {
+                    isDarkTheme = !isDarkTheme;
+                    if (isDarkTheme) {
+                        body.classList.add("dark-theme");
+                    } else {
+                        body.classList.remove("dark-theme");
+                    }
+                }
+
+                // Добавьте обработчик клика на кнопке
+                themeToggle.addEventListener("click", function() {
+                    toggleTheme();
+                });
+            });
+            document.getElementById('filter').addEventListener('change', function() {
+                var selectedType = this.value;
+                var rows = document.querySelectorAll('table tbody tr');
+
+                for (var i = 0; i < rows.length; i++) {
+                    var type = rows[i].querySelector('td:nth-child(4)').textContent;
+
+                    if (selectedType === 'all' || type === selectedType) {
+                        rows[i].style.display = '';
+                    } else {
+                        rows[i].style.display = 'none';
+                    }
+                }
+            });
+  </script>
+</html>
