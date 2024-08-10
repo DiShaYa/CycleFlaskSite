@@ -3,6 +3,9 @@
 
 Добро пожаловать в репозиторий проекта "Цикл" - навигационной системы, которая помогает пользователям находить магазины и рестораны, поддерживающие экологические проекты, и получать скидки и бонусы за использование экологичных решений.
 
+1. [О проекте](https://github.com/DiShaYa/CycleFlaskSite/edit/main/README.md#о-проекте)
+2. [Основные характеристики](https://github.com/DiShaYa/CycleFlaskSite/edit/main/README.md#основные-характеристики)
+
 ![](https://github.com/DiShaYa/CycleFlaskSite/blob/main/курс%20фот/Снимок%20экрана%202024-05-17%20020329.png)
 
 ![](https://github.com/DiShaYa/CycleFlaskSite/blob/main/курс%20фот/2.png)
